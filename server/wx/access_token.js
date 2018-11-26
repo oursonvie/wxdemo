@@ -17,3 +17,8 @@ getAccessToken = () => {
     console.log(err)
   })
 }
+
+accessTokens = () => {
+  token = AccessTokens.find({}, {sort:{createdAt:-1},limit:1}).fetch()
+  return token[0].access_token
+}
