@@ -9,6 +9,8 @@
   },
   "dependencies": {
     "@babel/runtime": "^7.0.0",
+    "body-parser": "^1.18.3",
+    "body-parser-xml": "^1.1.0",
     "es6-denodeify": "^0.1.5",
     "meteor-node-stubs": "^0.4.1"
   }
