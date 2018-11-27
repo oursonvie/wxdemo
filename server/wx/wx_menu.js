@@ -8,9 +8,9 @@ creatMenuUrlwithToken = () => {
 menu = {
   "button":[
     {
-         "type":"click",
-         "name":"今曲",
-         "key":"V1001_TODAY_MUSIC"
+         "type":"view",
+         "name":"绑定账号",
+         "url":`https://32621e70.ngrok.io/`
      },
      {
           "name":"菜单",
@@ -31,6 +31,10 @@ menu = {
 creatMenu = () => {
   PromiseHTTPCall('POST', creatMenuUrlwithToken(), {data:menu})
   .then( res => {
+    if ( res.data.errcode == 42001 ) {
+      token = getAccessToken().access_token
+      PromiseHTTPCall('POST', token, {data:menu})
+    }
     console.log(res)
   })
   .catch( err => {
