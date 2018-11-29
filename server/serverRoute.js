@@ -8,6 +8,7 @@ Picker.middleware( bodyParser.xml() );
 // route for wx validation
 Picker.route('/callback', function(params, req, res, next) {
   let body = params.query;
+
   console.log(`[Request Methods] ${req.method}`)
   // console.log(req.headers)
 

@@ -5,12 +5,16 @@ creatMenuUrlwithToken = () => {
   return `${creatMenuUrl}${accessTokens()}`
 }
 
+oauth_enter_point = encodeURIComponent('http://1060bf9a.ngrok.io')
+
+oauth_url = `https://open.weixin.qq.com/connect/oauth2/authorize?appid=${appid}&redirect_uri=${oauth_enter_point}&response_type=code&scope=snsapi_base&state=123#wechat_redirect`
+
 menu = {
   "button":[
     {
          "type":"view",
          "name":"绑定账号",
-         "url":`https://1060bf9a.ngrok.io/`
+         "url":`${oauth_url}`
      },
      {
           "name":"菜单",

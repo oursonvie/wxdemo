@@ -1,3 +1,13 @@
 <template name="homePage">
-  homePage
+  <p>homePage</p>
+
+  {{#if wx_res}}
+
+    {{#if wx_res.openid}}
+      {{wx_res.openid}}
+    {{else}}
+      登录以过期，请重新进入绑定页面
+    {{/if}}
+
+  {{/if}}
 </template>
