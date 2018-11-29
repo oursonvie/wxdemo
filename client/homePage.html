@@ -1,18 +1,31 @@
 <template name="homePage">
 
-  学生绑定
+  <div class="card">
 
-  {{#if wx_res}}
+    <div class="card-header">
+      学生绑定
+    </div>
 
-    {{#if wx_res.openid}}
+  </div>
 
-      {{wx_res.openid}}
-      {{> userInput}}
+  <div class="card-body">
 
-    {{else}}
-      登录以过期，请重新进入绑定页面
+    {{#if wx_res}}
+
+      {{#if wx_res.openid}}
+
+        {{wx_res.openid}}
+        {{> userInput}}
+
+      {{else}}
+        登录以过期，请重新进入绑定页面
+      {{/if}}
+
     {{/if}}
 
-  {{/if}}
+   </div>
+
+
+
 
 </template>
