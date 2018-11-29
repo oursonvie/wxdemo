@@ -1,13 +1,18 @@
 <template name="homePage">
-  <p>homePage</p>
+
+  学生绑定
 
   {{#if wx_res}}
 
     {{#if wx_res.openid}}
+
       {{wx_res.openid}}
+      {{> userInput}}
+
     {{else}}
       登录以过期，请重新进入绑定页面
     {{/if}}
 
   {{/if}}
+
 </template>

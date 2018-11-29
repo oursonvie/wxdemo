@@ -13,7 +13,7 @@ Template.homePage.onCreated(function() {
 
       Session.set('wx_res', res)
 
-      PromiseMeteorCall('displayToBackEnd', res)
+      // PromiseMeteorCall('displayToBackEnd', res)
 
     })
     .catch( err => {
