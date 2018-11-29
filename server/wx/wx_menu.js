@@ -10,7 +10,7 @@ menu = {
     {
          "type":"view",
          "name":"绑定账号",
-         "url":`https://32621e70.ngrok.io/`
+         "url":`https://1060bf9a.ngrok.io/`
      },
      {
           "name":"菜单",
@@ -28,7 +28,7 @@ menu = {
       }]
 }
 
-creatMenu = () => {
+createMenu = () => {
   PromiseHTTPCall('POST', creatMenuUrlwithToken(), {data:menu})
   .then( res => {
     if ( res.data.errcode == 42001 ) {
