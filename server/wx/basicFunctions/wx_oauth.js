@@ -28,7 +28,12 @@ Meteor.methods({
        console.log(err)
      }
 
-
-
   }
 });
+
+// generate oauthUrl
+oauthEnterPoint = () => {
+  oauth_enter_point = encodeURIComponent('https://974f36c4.ngrok.io')
+  oauth_url = `https://open.weixin.qq.com/connect/oauth2/authorize?appid=${appid}&redirect_uri=${oauth_enter_point}&response_type=code&scope=snsapi_base&state=123#wechat_redirect`
+  return `${oauth_url}`
+}

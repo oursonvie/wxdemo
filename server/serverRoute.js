@@ -2,6 +2,9 @@
 var bodyParser = require('body-parser')
 require('body-parser-xml')(bodyParser);
 
+// parser turn json into xml
+var js2xmlparser = require("js2xmlparser");
+
 Picker.middleware( bodyParser.xml() );
 
 
@@ -28,7 +31,16 @@ Picker.route('/callback', function(params, req, res, next) {
       if (bodyContent.MsgType == 'text') {
         console.log(`[Incoming text message] from ${bodyContent.FromUserName}: [${bodyContent.Content}]`)
 
-        keywordReplay(bodyContent.FromUserName, bodyContent.Content)
+        replay = keywordReplay(bodyContent)
+
+        // only replay when server has response
+        if (replay) {
+          xmlRes = js2xmlparser.parse("xml", replay)
+          console.log(xmlRes)
+          // replay to post request
+          res.end(xmlRes)
+        }
+
 
       } else {
         console.log( `${bodyContent.MsgType} from ${bodyContent.FromUserName}` )
