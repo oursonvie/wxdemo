@@ -5,7 +5,7 @@ creatMenuUrlwithToken = () => {
   return `${creatMenuUrl}${accessTokens()}`
 }
 
-oauth_enter_point = encodeURIComponent('http://1060bf9a.ngrok.io')
+oauth_enter_point = encodeURIComponent('https://974f36c4.ngrok.io')
 
 oauth_url = `https://open.weixin.qq.com/connect/oauth2/authorize?appid=${appid}&redirect_uri=${oauth_enter_point}&response_type=code&scope=snsapi_base&state=123#wechat_redirect`
 
@@ -21,20 +21,20 @@ menu = {
           "sub_button":[
           {
               "type":"view",
-              "name":"搜索",
-              "url":"http://www.soso.com/"
-           },
-           {
-              "type":"click",
-              "name":"赞你妹",
-              "key":"V1001_GOOD"
-           }]
+              "name":"学生中心",
+              "url":"http://www.bbs-step.com/"
+           }
+         ]
       }]
 }
 
+// function to create new menu on server
 createMenu = () => {
   PromiseHTTPCall('POST', creatMenuUrlwithToken(), {data:menu})
   .then( res => {
+
+    console.log(res)
+
     if ( res.data.errcode == 42001 ) {
       token = getAccessToken().access_token
       PromiseHTTPCall('POST', token, {data:menu})

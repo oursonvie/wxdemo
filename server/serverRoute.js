@@ -8,6 +8,7 @@ Picker.middleware( bodyParser.xml() );
 // route for wx validation
 Picker.route('/callback', function(params, req, res, next) {
   let body = params.query;
+  // console.log(body)
 
   console.log(`[Request Methods] ${req.method}`)
   // console.log(req.headers)
@@ -20,11 +21,19 @@ Picker.route('/callback', function(params, req, res, next) {
     if (req.body && req.body.xml) {
       let bodyContent = req.body.xml
 
-
       // write into DB
       Messages.insert(bodyContent)
 
-      console.log(bodyContent)
+      // keyword replay handler
+      if (bodyContent.MsgType == 'text') {
+        console.log(`[Incoming text message] from ${bodyContent.FromUserName}: [${bodyContent.Content}]`)
+
+        keywordReplay(bodyContent.FromUserName, bodyContent.Content)
+
+      } else {
+        console.log( `${bodyContent.MsgType} from ${bodyContent.FromUserName}` )
+      }
+
     }
 
     // response to wx server
