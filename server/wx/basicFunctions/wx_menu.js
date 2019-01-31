@@ -1,5 +1,3 @@
-
-
 // create menu
 let creatMenuUrl = `https://api.weixin.qq.com/cgi-bin/menu/create?access_token=`
 
@@ -8,27 +6,17 @@ creatMenuUrlwithToken = () => {
 }
 
 generateMenu = () => {
-  return `
-    {
+  return menu = {
       "button":[
         {
              "type":"view",
-             "name":"绑定账号",
-             "url": ${oauthEnterPoint()}
-         },
-         {
-              "name":"菜单",
-              "sub_button":[
-              {
-                  "type":"view",
-                  "name":"学生中心",
-                  "url":"http://www.bbs-step.com/"
-               }
-             ]
-          }]
+             "name":"学生中心",
+             "url": "http://www.bbs-step.com/"
+         }
+       ]
     }
-  `
 }
+
 
 // function to create new menu on server
 createMenu = () => {
@@ -44,6 +32,17 @@ createMenu = () => {
     console.log(res)
   })
   .catch( err => {
+    console.log(err)
+  })
+}
+
+// query current menu API
+currentMenu = () => {
+  PromiseHTTPCall('GET', `https://api.weixin.qq.com/cgi-bin/menu/get?access_token=${accessTokens()}`)
+  .then( res => {
+    console.log(res.content)
+  })
+  .catch(err => {
     console.log(err)
   })
 }

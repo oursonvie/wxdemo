@@ -36,7 +36,7 @@ Picker.route('/callback', function(params, req, res, next) {
         // only replay when server has response
         if (replay) {
           xmlRes = js2xmlparser.parse("xml", replay)
-          console.log(xmlRes)
+          // console.log(xmlRes)
           // replay to post request
           res.end(xmlRes)
         }

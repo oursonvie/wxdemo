@@ -1,9 +1,6 @@
 keywordReplay = (bodyContent) => {
 
-  console.log(bodyContent.Content)
-  console.log(bodyContent.Content.includes('绑定'))
-
-  if ( bodyContent.Content.includes('绑定') ) {
+  if ( bodyContent.Content[0].includes('绑定') ) {
 
     replay = {
       "ToUserName": bodyContent.FromUserName,

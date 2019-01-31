@@ -1,6 +1,7 @@
 {
   "private": {
     "appid" : "wx6b32ec5ac06ead43",
-    "secret" : "b7e2430b1473ba8505f7914f3ae1ded0"
+    "secret" : "b7e2430b1473ba8505f7914f3ae1ded0",
+    "wechatServerAddress": "https://3e749f73.ngrok.io"
   }
 }
