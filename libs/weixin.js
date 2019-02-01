@@ -1,5 +1,5 @@
 valideWX = (nonce, timestamp, signature) => {
-  token = 'tonny'
+  token = Meteor.settings.private.token
   tmpArr = [token, nonce, timestamp].sort()
   tmpArr = tmpArr.toString().replace( /,/g, "" )
 
