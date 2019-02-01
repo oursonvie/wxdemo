@@ -13,7 +13,7 @@ Picker.route('/callback', function(params, req, res, next) {
   let body = params.query;
   // console.log(body)
 
-  console.log(`[Request Methods] ${req.method}`)
+  // console.log(`[Request Methods] ${req.method}`)
   // console.log(req.headers)
 
   // validate if message is coming from wx
@@ -29,13 +29,24 @@ Picker.route('/callback', function(params, req, res, next) {
 
       // keyword replay handler
       if (bodyContent.MsgType == 'text') {
-        console.log(`[Incoming text message] from ${bodyContent.FromUserName}: [${bodyContent.Content}]`)
+        console.log(`[Incoming Text Message] from ${bodyContent.FromUserName}: [${bodyContent.Content}]`)
 
         replay = keywordReplay(bodyContent)
 
         // only replay when server has response
         if (replay) {
           xmlRes = js2xmlparser.parse("xml", replay)
+          // console.log(xmlRes)
+          // replay to post request
+          res.end(xmlRes)
+        }
+      } else if (bodyContent.MsgType == 'event') {
+        console.log(`[Incoming Event] from ${bodyContent.FromUserName}: [${bodyContent.EventKey}]`)
+
+        reponse = eventHandler(bodyContent)
+
+        if (reponse) {
+          xmlRes = js2xmlparser.parse("xml", reponse)
           // console.log(xmlRes)
           // replay to post request
           res.end(xmlRes)

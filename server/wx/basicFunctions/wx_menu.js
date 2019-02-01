@@ -12,6 +12,23 @@ generateMenu = () => {
              "type":"view",
              "name":"学生中心",
              "url": "http://www.bbs-step.com/"
+         },
+         {
+           "type":"click",
+           "name":"人工客服",
+           "key":"REDIRECT_CHAT"
+         }
+       ]
+    }
+}
+
+backupMenu = () => {
+  return menu = {
+      "button":[
+        {
+             "type":"view",
+             "name":"学生中心",
+             "url": "http://www.bbs-step.com/"
          }
        ]
     }
@@ -22,9 +39,6 @@ generateMenu = () => {
 createMenu = () => {
   PromiseHTTPCall('POST', creatMenuUrlwithToken(), {data:generateMenu()})
   .then( res => {
-
-    console.log(res)
-
     if ( res.data.errcode == 42001 ) {
       token = getAccessToken().access_token
       PromiseHTTPCall('POST', token, {data:menu})
