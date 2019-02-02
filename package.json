@@ -9,6 +9,7 @@
   },
   "dependencies": {
     "@babel/runtime": "^7.0.0",
+    "bcrypt": "^3.0.3",
     "body-parser": "^1.18.3",
     "body-parser-xml": "^1.1.0",
     "es6-denodeify": "^0.1.5",

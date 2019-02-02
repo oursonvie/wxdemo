@@ -25,10 +25,15 @@ kadira:flow-router
 kadira:blaze-layout
 
 stolinski:stylus-multi
+alexwine:bootstrap-4
+fortawesome:fontawesome
 
 meteortoys:allthings
+
 momentjs:moment
 session@1.2.0
-alexwine:bootstrap-4
 underscore@1.0.10
-fortawesome:fontawesome
+
+accounts-base
+accounts-password
+alanning:roles
