@@ -1,0 +1,24 @@
+<template name="customerServiceManagement">
+
+  {{#if Template.subscriptionsReady}}
+
+    <div class="container">
+      <div class="row">
+
+        <div class="col-sm-4">
+          {{> kfList}}
+        </div>
+
+        <div class="col-sm-8">
+          studentlist
+        </div>
+
+      </div>
+    </div>
+
+  {{else}}
+    {{> loader}}
+  {{/if}}
+
+
+</template>

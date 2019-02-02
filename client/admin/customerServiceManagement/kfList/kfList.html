@@ -1,0 +1,9 @@
+<template name="kfList">
+  <div class="list-group">
+    {{#each kflist}}
+      <a href="#" class="list-group-item list-group-item-action">
+        {{this.kf_info.kf_nick}}
+      </a>
+    {{/each}}
+  </div>
+</template>

@@ -9,7 +9,12 @@ getAccessToken = () => {
     data.createdAt = new Date
 
     // write token into DB
-    AccessTokens.insert(data)
+    if (data.access_token) {
+      AccessTokens.insert(data)
+    } else {
+      console.log(data)
+    }
+
 
     return data.access_token
   } catch (err) {
