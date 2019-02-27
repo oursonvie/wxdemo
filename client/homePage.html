@@ -14,11 +14,26 @@
 
       {{#if wx_res.openid}}
 
-        {{wx_res.openid}}
-        {{> userInput}}
+        {{#if studentAccount}}
+
+          {{#with studentAccount}}
+            {{baseInfo.REALNAME}}
+            <button class="btn btn-danger btn-unbound">解绑</button>
+          {{/with}}
+
+
+
+        {{else}}
+
+          {{wx_res.openid}}
+          {{> userInput}}
+
+        {{/if}}
+
+
 
       {{else}}
-        登录以过期，请重新进入绑定页面
+        登录已过期，请重新进入绑定页面
       {{/if}}
 
     {{/if}}

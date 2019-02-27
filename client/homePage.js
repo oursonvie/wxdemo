@@ -3,8 +3,6 @@ Template.homePage.onCreated(function() {
   // init session
   Session.set('wx_res', false)
 
-  console.log('oncreated')
-
   var code = FlowRouter.getQueryParam("code");
 
   if (code) {
@@ -14,6 +12,13 @@ Template.homePage.onCreated(function() {
       Session.set('wx_res', res)
 
       // PromiseMeteorCall('displayToBackEnd', res)
+
+      let self = this;
+      self.autorun(function() {
+        // sub to allTeachers
+        self.subscribe('studentPub', res.openid)
+      })
+
 
     })
     .catch( err => {
@@ -26,7 +31,22 @@ Template.homePage.onCreated(function() {
 
 
 Template.homePage.helpers({
-  wx_res: function(){
+  wx_res: function() {
      return Session.get('wx_res')
+  },
+  studentAccount: function() {
+    return Students.findOne()
   }
 });
+
+Template.homePage.events({
+  'click .btn-unbound': function() {
+    PromiseMeteorCall('unbondWX', this.openid)
+    .then(res => {
+      alert(res)
+    })
+    .catch( err => {
+      alert(err)
+    })
+  }
+})

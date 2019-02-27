@@ -60,6 +60,7 @@ Picker.route('/callback', function(params, req, res, next) {
     }
 
     // response to wx server
+    // console.log(body.echostr)
     res.end(body.echostr)
   } else {
     res.end('err')
