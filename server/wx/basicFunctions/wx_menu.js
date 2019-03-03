@@ -17,6 +17,11 @@ generateMenu = () => {
            "type":"click",
            "name":"人工客服",
            "key":"REDIRECT_CHAT"
+         },
+         {
+           "type":"view",
+           "name":"个人中心",
+           "url":oauthEnterPoint()
          }
        ]
     }

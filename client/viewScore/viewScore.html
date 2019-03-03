@@ -1,0 +1,30 @@
+<template name="viewScore">
+  {{#if studentScore}}
+    <table class="table table-sm">
+      <thead>
+        <tr>
+          <th scope="col">课程名称</th>
+          <th scope="col">平时成绩</th>
+          <th scope="col">考试成绩</th>
+          <th scope="col">总成绩</th>
+        </tr>
+      </thead>
+
+      <tbody>
+
+        {{#each studentScore}}
+          <tr>
+            <td>{{coursename}}</td>
+            <td>{{peacetimegrade}}</td>
+            <td>{{examgrade}}</td>
+            <td>{{finalgrade}}</td>
+          </tr>
+        {{/each}}
+      </tbody>
+
+    </table>
+
+  {{else}}
+    <p>加载中</p>
+  {{/if}}
+</template>

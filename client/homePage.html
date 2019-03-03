@@ -18,6 +18,10 @@
 
           {{#with studentAccount}}
             {{baseInfo.REALNAME}}
+
+            <a class="btn btn-primary btn-view-score" href="/student/viewscore" role="button">查看成绩</a>
+            <a class="btn btn-primary btn-view-bill" href="/student/viewbill" role="button">查看缴费</a>
+
             <button class="btn btn-danger btn-unbound">解绑</button>
           {{/with}}
 
@@ -25,7 +29,6 @@
 
         {{else}}
 
-          {{wx_res.openid}}
           {{> userInput}}
 
         {{/if}}

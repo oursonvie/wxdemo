@@ -3,26 +3,35 @@ Meteor.methods({
      // need bounding methods below
      targetStudent = oracleStudentLookup(username)
 
-     if ( targetStudent && password == targetStudent.PASSWORD ) {
+     // check if student been bound already
 
-       result = Students.upsert({LOGINNAME:targetStudent.LOGINNAME},
-         {$set:{
-           studentCode: targetStudent.STUDENTCODE,
-           openid: openid,
-           name: targetStudent.REALNAME,
-           createdAt: new Date,
-           baseInfo: targetStudent
-         }}
-       )
+     if ( Students.find({LOGINNAME:'117093373412035'}).count() == 0) {
+       // check student password
+       if ( targetStudent && password == targetStudent.PASSWORD ) {
 
-       console.log(`[Upsert Student] ${JSON.stringify(result)}`)
+         result = Students.upsert({LOGINNAME:targetStudent.LOGINNAME},
+           {$set:{
+             studentCode: targetStudent.STUDENTCODE,
+             openid: openid,
+             name: targetStudent.REALNAME,
+             createdAt: new Date,
+             baseInfo: targetStudent
+           }}
+         )
 
-       bondLog(username, openid, 'bound')
+         console.log(`[Upsert Student] ${JSON.stringify(result)}`)
 
-       return `绑定成功`
+         bondLog(username, openid, 'bound')
+
+         return `绑定成功`
+       } else {
+         return `绑定失败`
+       }
      } else {
-       return `绑定失败`
+       return `学生已被绑定，请先在原微信账号解绑再绑定`
      }
+
+
 
   },
   unbondWX: function(openid) {

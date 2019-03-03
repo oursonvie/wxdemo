@@ -1,0 +1,30 @@
+<template name="viewBill">
+  {{#if studentBill}}
+    <table class="table table-sm">
+      <thead>
+        <tr>
+          <th scope="col">缴费时间</th>
+          <th scope="col">费用名称</th>
+          <th scope="col">费用类型</th>
+          <th scope="col">金额</th>
+        </tr>
+      </thead>
+
+      <tbody>
+
+        {{#each studentBill}}
+          <tr>
+            <td>{{formatDate operatedate}}</td>
+            <td>{{subjectname}}</td>
+            <td>{{action}}</td>
+            <td>{{amount}}</td>
+          </tr>
+        {{/each}}
+      </tbody>
+
+    </table>
+
+  {{else}}
+    <p>加载中</p>
+  {{/if}}
+</template>
