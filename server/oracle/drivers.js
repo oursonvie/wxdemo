@@ -22,7 +22,7 @@ let doClose = function (connection, resultSet)
 
 // general oracle query
 oracleQuery = (query) => {
-
+  
   const connection = Promise.await(oracledb.getConnection({
         user: Meteor.settings.private.oracleDB.user,
         password: Meteor.settings.private.oracleDB.password,

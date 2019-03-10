@@ -1,6 +1,7 @@
-bondLog = (username, openid, bound) => {
+bondLog = (certno, name, openid, bound) => {
   newObj = {
-    username: username,
+    certno: certno,
+    name: name,
     openid: openid,
     action: bound,
     createdAt: new Date

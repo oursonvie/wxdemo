@@ -48,5 +48,16 @@ Template.homePage.events({
     .catch( err => {
       alert(err)
     })
+  },
+  'click .btn-view-examcert': function() {
+    student = Students.findOne()
+    PromiseMeteorCall('queryExamCert', student.baseInfo.CERTIFICATENO, student.baseInfo.REALNAME)
+    .then( res => {
+      PromiseMeteorCall('displayToBackEnd', res)
+      window.location = res
+    })
+    .catch( err => {
+      alert(err)
+    })
   }
 })

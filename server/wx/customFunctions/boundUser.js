@@ -1,17 +1,15 @@
 Meteor.methods({
-  boundUser:function(username, password, openid){
+  boundUser:function(certno, name, openid){
      // need bounding methods below
-     targetStudent = oracleStudentLookup(username)
+     targetStudent = oracleStudentLookup(certno)
 
      // check if student been bound already
-
-     if ( Students.find({LOGINNAME:'117093373412035'}).count() == 0) {
+     if ( Students.find({'baseInfo.CERTIFICATENO': certno}).count() == 0) {
        // check student password
-       if ( targetStudent && password == targetStudent.PASSWORD ) {
+       if ( targetStudent && name == targetStudent.REALNAME ) {
 
-         result = Students.upsert({LOGINNAME:targetStudent.LOGINNAME},
+         result = Students.upsert({studentCode:targetStudent.STUDENTCODE},
            {$set:{
-             studentCode: targetStudent.STUDENTCODE,
              openid: openid,
              name: targetStudent.REALNAME,
              createdAt: new Date,
@@ -21,7 +19,7 @@ Meteor.methods({
 
          console.log(`[Upsert Student] ${JSON.stringify(result)}`)
 
-         bondLog(username, openid, 'bound')
+         bondLog(certno, name, openid, 'bound')
 
          return `绑定成功`
        } else {
@@ -39,7 +37,7 @@ Meteor.methods({
     result = Students.remove({openid:openid})
     if (result == 1) {
 
-      bondLog(targetStudent.username, targetStudent.openid, 'unbound')
+      bondLog(certno, name, openid, 'unbound')
 
       return `解绑成功`
     } else {

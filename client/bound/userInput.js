@@ -2,13 +2,13 @@ Template.userInput.events({
   "click .btn": function(event, template){
 
     try {
-      username = document.getElementById('username').value
-      password = document.getElementById('password').value
+      certno = document.getElementById('certno').value
+      name = document.getElementById('name').value
       openid = Session.get('wx_res').openid
 
-      if (username && password) {
+      if (certno && name && openid) {
 
-        PromiseMeteorCall('boundUser', username, password, openid)
+        PromiseMeteorCall('boundUser', certno, name, openid)
         .then( res => {
           alert(res)
         })
