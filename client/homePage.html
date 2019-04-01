@@ -1,14 +1,10 @@
 <template name="homePage">
 
-  <div class="card">
+  <div class="page">
 
-    <div class="card-header">
-      学生绑定
+    <div class="page__hd">
+        <h2 class="page__title">个人中心</h2>
     </div>
-
-  </div>
-
-  <div class="card-body">
 
     {{#if wx_res}}
 
@@ -17,16 +13,32 @@
         {{#if studentAccount}}
 
           {{#with studentAccount}}
-            {{baseInfo.REALNAME}}
 
-            <a class="btn btn-primary btn-view-score" href="/student/viewscore" role="button">查看成绩</a>
-            <a class="btn btn-primary btn-view-bill" href="/student/viewbill" role="button">查看缴费</a>
-            <button class="btn btn-primary btn-view-examcert">查看准考证</button>
+            <div class="page__bd page__bd_spacing">
 
-            <button class="btn btn-danger btn-unbound">解绑</button>
+              <div class="weui-cells">
+                <div class="weui-cell">
+                  <div class="weui-cell__hd" style="position: relative;margin-right: 10px;">
+                    <img src="{{studentPic baseInfo.STUDENTCODE}}" style="width: 50px;display: block" />
+                  </div>
+                  <div class="weui-cell__bd">
+                    <p>{{baseInfo.REALNAME}}</p>
+                    <p style="font-size: 13px;color: #888888;"> {{baseInfo.CURRENTSPECIALITYNAME}} - {{baseInfo.LEVELNAME}}</p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="weui-cells__title">自助信息查询</div>
+
+              <a class="weui-btn weui-btn_primary" href="/student/viewscore" role="button">查看成绩</a>
+
+              <a class="weui-btn weui-btn_default" href="/student/viewbill" role="button">查看缴费</a>
+
+              <a class="weui-btn weui-btn_warn btn-unbound" style="color:white">解绑</a>
+
+
+            </div>
           {{/with}}
-
-
 
         {{else}}
 
@@ -35,14 +47,13 @@
         {{/if}}
 
 
-
       {{else}}
         登录已过期，请重新进入绑定页面
       {{/if}}
 
     {{/if}}
 
-   </div>
+  </div>
 
 
 

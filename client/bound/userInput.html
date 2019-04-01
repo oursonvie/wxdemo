@@ -1,15 +1,35 @@
 <template name="userInput">
 
-  <div class="input-group mb-3">
-    <input type="text" class="form-control" placeholder="身份证号" id="certno" aria-describedby="basic-addon1">
+  <div class="page__bd page__bd_spacing">
+
+    <div class="weui-cells__title">请先绑定账号</div>
+
+    <div class="wui-cell">
+
+      <div class="weui-cells weui-cells_form">
+        <div class="weui-cell">
+          <div class="weui-cell__hd"><label class="weui-label">身份证号</label></div>
+          <div class="weui-cell__bd">
+            <input class="weui-input" placeholder="请输入身份证号" id="certno" />
+          </div>
+        </div>
+
+        <div class="weui-cell">
+          <div class="weui-cell__hd"><label class="weui-label">姓名</label></div>
+          <div class="weui-cell__bd">
+            <input class="weui-input" placeholder="请输入姓名" id="name" />
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <div class="weui-btn-area">
+      <a class="weui-btn weui-btn_primary" style="color:white">确定</a>
+    </div>
+
   </div>
-
-  <div class="input-group mb-3">
-    <input type="text" class="form-control" placeholder="姓名" id="name" aria-describedby="basic-addon1">
-  </div>
-
-
-
-  <button class="btn btn-primary">提交</button>
 
 </template>

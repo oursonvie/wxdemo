@@ -1,5 +1,5 @@
 Template.userInput.events({
-  "click .btn": function(event, template){
+  "click .weui-btn_primary": function(event, template){
 
     try {
       certno = document.getElementById('certno').value
@@ -10,7 +10,7 @@ Template.userInput.events({
 
         PromiseMeteorCall('boundUser', certno, name, openid)
         .then( res => {
-          alert(res)
+          weui.alert(res)
         })
         .catch( err => {
           console.log(err)
@@ -24,9 +24,6 @@ Template.userInput.events({
     } catch (err) {
       alert(err)
     }
-
-
-
 
   }
 });

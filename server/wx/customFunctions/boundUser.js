@@ -13,7 +13,8 @@ Meteor.methods({
              openid: openid,
              name: targetStudent.REALNAME,
              createdAt: new Date,
-             baseInfo: targetStudent
+             baseInfo: targetStudent,
+             certno: certno
            }}
          )
 
@@ -37,7 +38,7 @@ Meteor.methods({
     result = Students.remove({openid:openid})
     if (result == 1) {
 
-      bondLog(certno, name, openid, 'unbound')
+      bondLog(targetStudent.certno, targetStudent.name, targetStudent.openid, 'unbound')
 
       return `解绑成功`
     } else {

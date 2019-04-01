@@ -1,3 +1,5 @@
+import weui from 'weui.js';
+
 Template.homePage.onCreated(function() {
 
   // init session
@@ -13,10 +15,16 @@ Template.homePage.onCreated(function() {
 
       // PromiseMeteorCall('displayToBackEnd', res)
 
+      // debug mode
+      // res = {openid:'oIMnkskBrMjuP0TbYZ_urSqOeBuY'}
+      // Session.set('wx_res', res)
+
       let self = this;
       self.autorun(function() {
         // sub to allTeachers
         self.subscribe('studentPub', res.openid)
+        // debug
+        // self.subscribe('studentPub', res.openid)
       })
 
 
@@ -27,6 +35,7 @@ Template.homePage.onCreated(function() {
     })
   }
 
+
 });
 
 
@@ -36,6 +45,9 @@ Template.homePage.helpers({
   },
   studentAccount: function() {
     return Students.findOne()
+  },
+  studentPic: function(sid) {
+    return xueliStudentPic(sid)
   }
 });
 
@@ -43,18 +55,7 @@ Template.homePage.events({
   'click .btn-unbound': function() {
     PromiseMeteorCall('unbondWX', this.openid)
     .then(res => {
-      alert(res)
-    })
-    .catch( err => {
-      alert(err)
-    })
-  },
-  'click .btn-view-examcert': function() {
-    student = Students.findOne()
-    PromiseMeteorCall('queryExamCert', student.baseInfo.CERTIFICATENO, student.baseInfo.REALNAME)
-    .then( res => {
-      PromiseMeteorCall('displayToBackEnd', res)
-      window.location = res
+      weui.alert(res)
     })
     .catch( err => {
       alert(err)
