@@ -1,3 +1,5 @@
+import weui from 'weui.js';
+
 Template.userInput.events({
   "click .weui-btn_primary": function(event, template){
 

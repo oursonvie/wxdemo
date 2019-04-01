@@ -34,6 +34,7 @@ Meteor.methods({
 
   },
   unbondWX: function(openid) {
+    console.log(openid)
     targetStudent = Students.findOne({openid:openid})
     result = Students.remove({openid:openid})
     if (result == 1) {

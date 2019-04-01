@@ -1,5 +1,3 @@
-import weui from 'weui.js';
-
 Template.homePage.onCreated(function() {
 
   // init session
@@ -38,27 +36,11 @@ Template.homePage.onCreated(function() {
 
 });
 
-
 Template.homePage.helpers({
   wx_res: function() {
      return Session.get('wx_res')
   },
   studentAccount: function() {
     return Students.findOne()
-  },
-  studentPic: function(sid) {
-    return xueliStudentPic(sid)
-  }
-});
-
-Template.homePage.events({
-  'click .btn-unbound': function() {
-    PromiseMeteorCall('unbondWX', this.openid)
-    .then(res => {
-      weui.alert(res)
-    })
-    .catch( err => {
-      alert(err)
-    })
   }
 })
