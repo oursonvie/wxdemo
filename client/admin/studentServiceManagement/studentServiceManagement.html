@@ -12,6 +12,7 @@
             <th>批次</th>
             <th>层次</th>
             <th>专业</th>
+            <th>客服绑定</th>
           </tr>
         </thead>
 
@@ -26,6 +27,11 @@
               <td>{{batchNumber}}</td>
               <td>{{baseInfo.LEVELNAME}}</td>
               <td>{{baseInfo.CURRENTSPECIALITYNAME}}</td>
+
+              <td>
+                {{> cutomServiceOption}}
+              </td>
+
             </tr>
 
           {{/each}}

@@ -17,5 +17,8 @@ Meteor.methods({
     } catch(err) {
       console.log(err)
     }
+  },
+  changeCustomService: function(id, option) {
+    return Students.update({_id:id},{$set:{customService:option}})
   }
 })
