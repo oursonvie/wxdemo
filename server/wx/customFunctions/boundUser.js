@@ -3,8 +3,9 @@ Meteor.methods({
      // need bounding methods below
      targetStudent = oracleStudentLookup(certno)
 
-     // check if student been bound already
-     if ( Students.find({'baseInfo.CERTIFICATENO': certno}).count() == 0) {
+     // check if student been bound already or student belong to this
+     // lcenter
+     if ( Students.find({'baseInfo.CERTIFICATENO': certno}).count() == 0 && targetStudent.LCENTERCODE.includes(Meteor.settings.private.allowLcenterCode) ) {
        // check student password
        if ( targetStudent && name == targetStudent.REALNAME ) {
 

@@ -3,11 +3,12 @@
     "appid" : "wx6b32ec5ac06ead43",
     "secret" : "b7e2430b1473ba8505f7914f3ae1ded0",
     "token" : "67b89a9c7e4c4fc985a5969f2652855a",
-    "wechatServerAddress": "https://e85fd16c.ngrok.io",
+    "wechatServerAddress": "https://a03a5e87.ngrok.io",
     "oracleDB": {
         "user": "oems",
         "password": "xjoems",
         "connectString": "192.168.200.189/oems"
-      }
+      },
+    "allowLcenterCode": ["10698337"]
   }
 }

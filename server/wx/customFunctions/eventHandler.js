@@ -5,6 +5,8 @@ eventHandler = (bodyContent) => {
     // need to check account before transfor customservice
     console.log(`转接${bodyContent.FromUserName}，专属客服`)
 
+    // check student customservice if exist rediect to him/her
+
     replay = {
       "ToUserName": bodyContent.FromUserName,
       "FromUserName": bodyContent.ToUserName,

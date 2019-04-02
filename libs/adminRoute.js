@@ -11,3 +11,10 @@ FlowRouter.route('/customerServiceManagement', {
         BlazeLayout.render('desktopLayout', {main: 'customerServiceManagement'});
     }
 });
+
+FlowRouter.route('/studentServiceManagement', {
+   name: 'studentServiceManagement',
+    action() {
+        BlazeLayout.render('desktopLayout', {main: 'studentServiceManagement'});
+    }
+});

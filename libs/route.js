@@ -5,8 +5,6 @@ FlowRouter.route('/', {
     }
 });
 
-
-
 FlowRouter.route('/student/viewscore', {
    name: 'viewScore',
     action() {
