@@ -29,7 +29,10 @@
               <td>{{baseInfo.CURRENTSPECIALITYNAME}}</td>
 
               <td>
-                {{> cutomServiceOption}}
+                <select class="form-control" id="customServiceSelect">
+                  <option>待选</option>
+                  {{{kfListOption}}}
+                </select>
               </td>
 
             </tr>
