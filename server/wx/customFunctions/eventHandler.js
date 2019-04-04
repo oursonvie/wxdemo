@@ -21,6 +21,9 @@ eventHandler = (bodyContent) => {
     // need to check account before transfor customservice
     console.log(`转接: ${bodyContent.FromUserName}，专属客服至: ${student.customService}`)
 
+    // send message to user
+    sendToOpenId(openId, `正在转接客服`)
+
     if (student.customService && kfListArr.includes(student.customService)) {
       replay = {
         "ToUserName": bodyContent.FromUserName,
@@ -34,14 +37,15 @@ eventHandler = (bodyContent) => {
       return replay
     } else {
       replay = {
-        "touser": openId,
-        "msgtype": "text",
-        "text": {
-          "content": "尚未绑定客服，请联系班主任"
-        }
+        "ToUserName": bodyContent.FromUserName,
+        "FromUserName": bodyContent.ToUserName,
+        "CreateTime": moment().unix(),
+        "MsgType": "transfer_customer_service",
       }
+      return replay
     }
 
+    sendToOpenId(openId, `客服已接通，请留言`)
 
   } else {
     return false
