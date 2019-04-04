@@ -2,11 +2,9 @@ eventHandler = (bodyContent) => {
 
   if (bodyContent.EventKey == 'REDIRECT_CHAT') {
 
-    // need to check account before transfor customservice
-    console.log(`转接${bodyContent.FromUserName}，专属客服`)
-
     // check student customservice if exist rediect to him/her
-    openId = bodyContent.FromUserName
+    openId = bodyContent.FromUserName[0]
+
     student = Students.findOne({
       openid: openId
     })
@@ -17,7 +15,11 @@ eventHandler = (bodyContent) => {
         'kf_info.kf_account': 1
       }
     }).fetch()
+
     kfListArr = ObjArrCoverter(kfList, 'kf_info', 'kf_account')
+
+    // need to check account before transfor customservice
+    console.log(`转接: ${bodyContent.FromUserName}，专属客服至: ${student.customService}`)
 
     if (student.customService && kfListArr.includes(student.customService)) {
       replay = {
