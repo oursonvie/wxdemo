@@ -22,7 +22,7 @@ eventHandler = (bodyContent) => {
     console.log(`转接: ${bodyContent.FromUserName}，专属客服至: ${student.customService}`)
 
     // send message to user
-    sendToOpenId(openId, `正在转接客服`)
+    sendToOpenId(openId, `客服已接通请留言`)
 
     if (student.customService && kfListArr.includes(student.customService)) {
       replay = {
@@ -44,8 +44,6 @@ eventHandler = (bodyContent) => {
       }
       return replay
     }
-
-    sendToOpenId(openId, `客服已接通，请留言`)
 
   } else {
     return false
