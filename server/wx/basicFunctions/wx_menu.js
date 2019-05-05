@@ -19,8 +19,7 @@ generateMenu = () => {
       },
       {
         "name": "个人中心",
-        "sub_button": [
-          {
+        "sub_button": [{
             "type": "view",
             "name": "绑定信息",
             "url": oauthEnterPoint()
@@ -71,13 +70,29 @@ createMenu = () => {
     })
 }
 
+
+Meteor.methods({
+  currentMenu: function() {
+    if (Roles.userIsInRole(this.userId, ['admin'])) {
+      try {
+        res = Promise.await(PromiseHTTPCall('GET', `https://api.weixin.qq.com/cgi-bin/menu/get?access_token=${accessTokens()}`))
+
+        return res.content
+      } catch (e) {
+        console.log(e)
+      }
+    }
+  },
+  createMenu: function() {
+    if (Roles.userIsInRole(this.userId, ['admin'])) {
+      try {
+        res = Promise.await(PromiseHTTPCall('POST', creatMenuUrlwithToken(), {data: generateMenu()}))
+        return res
+      } catch(e) {
+        console.log(e)
+      }
+    }
+  }
+});
+
 // query current menu API
-currentMenu = () => {
-  PromiseHTTPCall('GET', `https://api.weixin.qq.com/cgi-bin/menu/get?access_token=${accessTokens()}`)
-    .then(res => {
-      console.log(res.content)
-    })
-    .catch(err => {
-      console.log(err)
-    })
-}

@@ -14,6 +14,8 @@ Template.viewScore.onCreated(function() {
           .then( res => {
             Session.set('studentScore',res)
           })
+        } else {
+          alert(JSON.stringify(res))
         }
 
       })

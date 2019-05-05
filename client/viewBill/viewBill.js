@@ -11,9 +11,10 @@ Template.viewBill.onCreated(function() {
           // start sub after update
           PromiseMeteorCall('queryFees', res.openid)
             .then(res => {
-              +
               Session.set('studentFees', res)
             })
+        } else {
+          alert(JSON.stringify(res))
         }
 
       })
