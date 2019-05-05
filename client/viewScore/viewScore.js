@@ -2,12 +2,28 @@ Template.viewScore.onCreated(function() {
 
   Session.set('studentScore',false)
 
-  // start sub after update
-  PromiseMeteorCall('queryScore', Session.get('wx_res').openid)
-  .then( res => {
-    Session.set('studentScore',res)
-  })
-  // PromiseMeteorCall('displayToBackEnd', res)
+  var code = FlowRouter.getQueryParam("code");
+
+  if (code) {
+    PromiseMeteorCall('oauth_token', code)
+      .then(res => {
+
+        if (res && res.openid) {
+          // start sub after update
+          PromiseMeteorCall('queryScore', res.openid)
+          .then( res => {
+            Session.set('studentScore',res)
+          })
+        }
+
+      })
+      .catch(err => {
+        alert(err)
+        console.log(err)
+      })
+  }
+
+
 
 });
 

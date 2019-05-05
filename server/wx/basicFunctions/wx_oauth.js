@@ -33,7 +33,14 @@ Meteor.methods({
 
 // generate oauthUrl
 oauthEnterPoint = () => {
-  oauth_enter_point = encodeURIComponent(Meteor.settings.private.wechatServerAddress)
+  oauth_enter_point = encodeURIComponent(Meteor.settings.public.wechatServerAddress)
+  oauth_url = `https://open.weixin.qq.com/connect/oauth2/authorize?appid=${appid}&redirect_uri=${oauth_enter_point}&response_type=code&scope=snsapi_base&state=123#wechat_redirect`
+  return `${oauth_url}`
+}
+
+// generate oauthPageURL
+oauthRedirectTo = (url) => {
+  oauth_enter_point = encodeURIComponent(url)
   oauth_url = `https://open.weixin.qq.com/connect/oauth2/authorize?appid=${appid}&redirect_uri=${oauth_enter_point}&response_type=code&scope=snsapi_base&state=123#wechat_redirect`
   return `${oauth_url}`
 }

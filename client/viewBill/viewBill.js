@@ -1,14 +1,28 @@
 Template.viewBill.onCreated(function() {
+  Session.set('studentFees', false)
 
-  Session.set('studentFees',false)
+  var code = FlowRouter.getQueryParam("code");
 
-  // start sub after update
-  PromiseMeteorCall('queryFees', Session.get('wx_res').openid)
-  .then( res => {
-    Session.set('studentFees',res)
+  if (code) {
+    PromiseMeteorCall('oauth_token', code)
+      .then(res => {
 
-    // PromiseMeteorCall('displayToBackEnd', res)
-  })
+        if (res && res.openid) {
+          // start sub after update
+          PromiseMeteorCall('queryFees', res.openid)
+            .then(res => {
+              +
+              Session.set('studentFees', res)
+            })
+        }
+
+      })
+      .catch(err => {
+        alert(err)
+        console.log(err)
+      })
+  }
+
 });
 
 
