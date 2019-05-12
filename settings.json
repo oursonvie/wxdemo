@@ -1,6 +1,6 @@
 {
   "public": {
-    "wechatServerAddress": "https://7bf974e0.ngrok.io"
+    "wechatServerAddress": "https://ab38f998.ngrok.io"
   },
   "private": {
     "appid" : "wx6b32ec5ac06ead43",

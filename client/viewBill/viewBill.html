@@ -1,30 +1,56 @@
 <template name="viewBill">
-  {{#if studentBill}}
-    <table class="table table-sm">
-      <thead>
-        <tr>
-          <th scope="col">缴费时间</th>
-          <th scope="col">费用名称</th>
-          <th scope="col">费用类型</th>
-          <th scope="col">金额</th>
-        </tr>
-      </thead>
 
-      <tbody>
+  {{#if wx_res}}
 
-        {{#each studentBill}}
-          <tr>
-            <td>{{formatDate operatedate}}</td>
-            <td>{{subjectname}}</td>
-            <td>{{action}}</td>
-            <td>{{amount}}</td>
-          </tr>
-        {{/each}}
-      </tbody>
+    {{#if wx_res.openid}}
 
-    </table>
+      {{#if studentAccount}}
 
-  {{else}}
-    <p>加载中</p>
+        {{#with studentAccount}}
+
+          {{#if studentBill}}
+            <table class="table table-sm">
+              <thead>
+                <tr>
+                  <th scope="col">缴费时间</th>
+                  <th scope="col">费用名称</th>
+                  <th scope="col">费用类型</th>
+                  <th scope="col">金额</th>
+                </tr>
+              </thead>
+
+              <tbody>
+
+                {{#each studentBill}}
+                  <tr>
+                    <td>{{formatDate operatedate}}</td>
+                    <td>{{subjectname}}</td>
+                    <td>{{action}}</td>
+                    <td>{{amount}}</td>
+                  </tr>
+                {{/each}}
+              </tbody>
+
+            </table>
+
+          {{else}}
+            <p>加载中</p>
+          {{/if}}
+
+        {{/with}}
+
+      {{else}}
+
+        {{> userInput}}
+
+      {{/if}}
+
+
+    {{else}}
+      登录已过期，请重新进入绑定页面
+    {{/if}}
+
   {{/if}}
+
+
 </template>

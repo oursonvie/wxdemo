@@ -19,7 +19,6 @@ Template.homePage.onCreated(function() {
 
       let self = this;
       self.autorun(function() {
-        // sub to allTeachers
         self.subscribe('studentPub', res.openid)
         // debug
         // self.subscribe('studentPub', res.openid)
