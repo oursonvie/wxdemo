@@ -8,6 +8,7 @@ Meteor.methods({
       return oralceScoreQuery(student.studentCode)
     } else {
       console.log(`[Query Score Error] ${openId}`)
+      throw new Meteor.Error('001', "请先绑定账号");
     }
   }
 });

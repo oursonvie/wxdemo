@@ -4,50 +4,41 @@
 
     {{#if wx_res.openid}}
 
-      {{#if studentAccount}}
+      {{#if studentBill}}
+        <table class="table table-sm">
+          <thead>
+            <tr>
+              <th scope="col">缴费时间</th>
+              <th scope="col">费用名称</th>
+              <th scope="col">费用类型</th>
+              <th scope="col">金额</th>
+            </tr>
+          </thead>
 
-        {{#with studentAccount}}
+          <tbody>
 
-          {{#if studentBill}}
-            <table class="table table-sm">
-              <thead>
-                <tr>
-                  <th scope="col">缴费时间</th>
-                  <th scope="col">费用名称</th>
-                  <th scope="col">费用类型</th>
-                  <th scope="col">金额</th>
-                </tr>
-              </thead>
+            {{#each studentBill}}
+              <tr>
+                <td>{{formatDate operatedate}}</td>
+                <td>{{subjectname}}</td>
+                <td>{{action}}</td>
+                <td>{{amount}}</td>
+              </tr>
+            {{/each}}
+          </tbody>
 
-              <tbody>
-
-                {{#each studentBill}}
-                  <tr>
-                    <td>{{formatDate operatedate}}</td>
-                    <td>{{subjectname}}</td>
-                    <td>{{action}}</td>
-                    <td>{{amount}}</td>
-                  </tr>
-                {{/each}}
-              </tbody>
-
-            </table>
-
-          {{else}}
-            <p>加载中</p>
-          {{/if}}
-
-        {{/with}}
+        </table>
 
       {{else}}
-
-        {{> userInput}}
-
+        {{#if queryErr}}
+          <p>请先绑定学生账号</p>
+        {{else}}
+          <p>加载中</p>
+        {{/if}}
       {{/if}}
 
-
     {{else}}
-      登录已过期，请重新进入绑定页面
+      登录已过期，请重新进入页面
     {{/if}}
 
   {{/if}}

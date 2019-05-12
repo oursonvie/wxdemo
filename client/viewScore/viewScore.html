@@ -1,30 +1,45 @@
 <template name="viewScore">
-  {{#if studentScore}}
-    <table class="table table-sm">
-      <thead>
-        <tr>
-          <th scope="col">课程名称</th>
-          <th scope="col">平时成绩</th>
-          <th scope="col">考试成绩</th>
-          <th scope="col">总成绩</th>
-        </tr>
-      </thead>
 
-      <tbody>
+  {{#if wx_res}}
 
-        {{#each studentScore}}
-          <tr>
-            <td>{{coursename}}</td>
-            <td>{{peacetimegrade}}</td>
-            <td>{{examgrade}}</td>
-            <td>{{finalgrade}}</td>
-          </tr>
-        {{/each}}
-      </tbody>
+    {{#if wx_res.openid}}
 
-    </table>
+      {{#if studentScore}}
+        <table class="table table-sm">
+          <thead>
+            <tr>
+              <th scope="col">课程名称</th>
+              <th scope="col">平时成绩</th>
+              <th scope="col">考试成绩</th>
+              <th scope="col">总成绩</th>
+            </tr>
+          </thead>
 
-  {{else}}
-    <p>加载中</p>
+          <tbody>
+
+            {{#each studentScore}}
+              <tr>
+                <td>{{coursename}}</td>
+                <td>{{peacetimegrade}}</td>
+                <td>{{examgrade}}</td>
+                <td>{{finalgrade}}</td>
+              </tr>
+            {{/each}}
+          </tbody>
+
+        </table>
+
+      {{else}}
+        {{#if queryErr}}
+          <p>请先绑定学生账号</p>
+        {{else}}
+          <p>加载中</p>
+        {{/if}}
+      {{/if}}
+
+    {{else}}
+      登录已过期，请重新进入页面
+    {{/if}}
+
   {{/if}}
 </template>
